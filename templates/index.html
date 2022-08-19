@@ -1,0 +1,49 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+{% block title %}Songs DB{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="heading">Songs DB</h1>
+    <a href="{{ url_for('home') }}"><button class="button" type="button">Search Other Songs</button></a>
+    <h1>{{ album_name}}</h1>
+    <div class="card">
+        <div class="front" style="background-image: url({{ image }});">
+            <p class="large">1</p>
+        </div>
+    </div>
+</div>
+<div class="float-container">
+    <div class="float-child">
+        {% for song in songs_names %}
+        <div class="row">
+            <div class="col" style="padding-bottom: 4%; padding-top: 0.5%;">
+                <p>{{ song }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="float-child">
+        {% for song in songs_links %}
+        <div class="row">
+            <div class="col" style="padding-bottom: 2%;">
+                <a href="{{ song }}"><button class="button">Download</button></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
